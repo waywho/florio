@@ -1,0 +1,33 @@
+<h1>Florio</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Word</th>
+      <th>Definition</th>
+      <th>Alt Word</th>
+      <th>Alt Definition</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+</thead>
+  <tbody>
+    <% @words.each do |word| %>
+      <tr>
+        <td><%= word.word %></td>
+        <td><%= word.Definition %></td>
+        <td><%= word.alternative_word %></td>
+        <td><%= word.alternative_definition %></td>
+        <td><%= link_to 'Show', "" %></td>
+        <td><%= link_to 'Edit', "" %></td>
+        <td><%= link_to 'Destroy', "", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Import File</h2>
+<%= form_tag import_file_path, multipart: true do %>
+	<%= file_field_tag :file %>
+	<%= submit_tag "Import" %>
+<% end %>
