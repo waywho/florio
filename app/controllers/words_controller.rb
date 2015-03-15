@@ -1,6 +1,6 @@
 class WordsController < ApplicationController
 	def index
-		@word = Word.order("RANDOM()").first
+		@words = Word.find_by_fuzzy_word(params[:search], :limit => 10)
 	end
 
 	def import

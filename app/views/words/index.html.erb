@@ -1,21 +1,35 @@
 <h1>Florio</h1>
+
+
+<%= form_tag root_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+
 <table>
+  <% if @words.present? %>
+    <% @words.each do |word| %>
     <tr>
       <th>Word</th>
-      <td><%= @word.word %></td>
-  	</tr>
-  	<tr>
-      <th>Definition</th>
-      <td><%= @word.definition %></td>
+      <td><%= word.word %></td>
     </tr>
-    <% if @word.alternative_word.present? %>
+    <tr>
+      <th>Definition</th>
+      <td><%= word.definition %></td>
+    </tr>
+    <% if word.alternative_word.present? %>
     <tr>
       <th>Alt Word</th>
-      <td><%= @word.alternative_word %></td>
-  	</tr>
-  	<tr>
+      <td><%= word.alternative_word %></td>
+    </tr>
+    <tr>
       <th>Alt Definition</th>
-      <td><%= @word.alternative_definition %></td>
+      <td><%= word.alternative_definition %></td>
     </tr>
     <% end %>
+    <% end %>
+  <% end %>
 </table>
