@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   end
   root 'words#index'
 
+  get '/autsearches?utf8=✓&search=', to: 'autosearches#index', as: :autosearches
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
