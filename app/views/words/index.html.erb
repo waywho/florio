@@ -1,11 +1,11 @@
 <h1>Florio</h1>
 
-<%= form_tag root_path, :method => 'get' do %>
+<form action="<%= root_path%>" method ='get'>
   <p>
-    <%= text_field_tag :search, params[:search], data: {autocomplete_source: autosearches_path} %>
+    <input name='search', id='search' <%= params[:search] %> data-autocomplete-source='<%=autosearches_path %>?search=' />
     <%= submit_tag "Search", :name => nil %>
   </p>
-<% end %>
+</form>
 
 <table>
   <% if @words.present? %>
@@ -13,21 +13,19 @@
     <tr>
       <th>Word</th>
       <td><%= word.word %></td>
+      <% if word.alternative_word.present? %>
+      <th>Alt Word</th>
+      <td><%= word.alternative_word %></td>
+      <% end %>
     </tr>
     <tr>
       <th>Definition</th>
       <td><%= word.definition %></td>
-    </tr>
-    <% if word.alternative_word.present? %>
-    <tr>
-      <th>Alt Word</th>
-      <td><%= word.alternative_word %></td>
-    </tr>
-    <tr>
+    <% if word.alternative_definition.present? && word.alternative_definition != word.definition %>
       <th>Alt Definition</th>
       <td><%= word.alternative_definition %></td>
+      <% end %>
     </tr>
-    <% end %>
     <% end %>
   <% end %>
 </table>
@@ -35,8 +33,12 @@
 <script>
 $(function () {
     $('#search').autocomplete({
-       source: $('#search').data('autocomplete_source'),
-       minLength: 2
+       source: $('#search').data('autocomplete-source'),
+       minLength: 2,
+       messages: {
+        noResults: '',
+        results: function() {}
+       }
     });
 })
 
