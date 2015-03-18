@@ -103,7 +103,7 @@
         </div>
         <%= simple_form_for @word do |f| %>
         <div class="modal-body">
-          Thank you for helping us to edit. You can search from this source<%= link_to 'http://www.pbm.com/~lindahl/florio/search/search.cgi', :target => '_blank', :id => 'florioSearch', :data_source => :word do %> 
+          Thank you for helping us to edit. You can search from this source<%= link_to 'http://www.pbm.com/~lindahl/florio/search/search.cgi', :target => '_blank', :id => 'florioSearch', :data_source => @word.word do %> 
             <i>Woodcut facsimile of the John Florio's Dictionary</i>
           <% end %>
           <%= f.input :word %>
@@ -124,14 +124,19 @@
 
 <script>
 $(function () {
-    $('#search').autocomplete({
-       source: $('#search').data('autocomplete-source'),
-       minLength: 2,
-       messages: {
-        noResults: '',
-        results: function() {}
-       }
-    });
+  $('#search').autocomplete({
+    source: $('#search').data('autocomplete-source'),
+    minLength: 2,
+    messages: {
+    noResults: '',
+    results: function() {}
+    }
+  });
+
+  // $('#florioSearch').click(function() {
+  //   $.post("http://www.pbm.com/~lindahl/florio/search/search_backend.cgi", $('florioSearch').data('data_source'));
+  // })
 })
+
 
 </script>
