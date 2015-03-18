@@ -7,6 +7,11 @@ body {
 	width: 50%;
 }
 
+.help {
+	border-radius: 10px;
+	background-color: #ffc400;
+}
+
 hr.divide {
 	border-top: 2px solid #B0D66F;
 }
@@ -41,7 +46,10 @@ a.ui-state-hover, a.ui-state-active {
 	background-color: #FFFCB2;
 }
 
-.clear {
+.clr {
 	clear: both;
 }
 
+a {
+	display: inline;
+}

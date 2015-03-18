@@ -23,14 +23,16 @@ class WordsController < ApplicationController
 		@word = Word.find(params[:id])
 	end
 
-	def import
-		Word.import(params[:file])
-		redirect_to root_url, notice: "Products imported."
+	def update
+		@word = Word.find(params[:id])
+		@word.update_attributes(word_params)
+		redirect_to root_path
 	end
+
 
 	private
 
-	def csv_params
-		params.require(:word).permit(:word, :definition, :alternative_word, :alternative_definition, :alphabet)
+	def word_params
+		params.require(:word).permit(:word, :definition, :alternative_word, :alternative_definition)
 	end
 end

@@ -1,8 +1,23 @@
-<br />
-<div class = 'florio center-block text-center'>
-  <h1>Florio's 1611 <br/>Italian-English Dictionary</h1>
+<div class = 'help col-xs-12 col-md-12'>
   <br />
-  <form action="<%= root_path %>" method ='get' class = 'form-inline'>
+  Thank you for visiting this site. This site is still in its baby stages. As you search through the dictionary, you will see that there are words with gibberish characters in them. Unfortunately there is too many to edit them at once.
+  <br />
+  <br />
+    This is where you can help. If you have 5 minutes to spare, we would appreciate it if you could hit that edit button, look up from the<%= link_to 'http://www.pbm.com/~lindahl/florio/search/search.cgi', :target => '_blank' do %> 
+    <i>Woodcut facsimile of the John Florio's Dictionary,</i>
+    <% end %>
+     and help us edit the entry.
+     <br />
+     <br />
+</div>
+<br class ='clr' />
+<div class = 'florio center-block text-center'>
+  <br />
+  <h1>Florio's 1611 <br/>Italian-English Dictionary</h1>
+  <i>Source: <%= link_to 'Florio Dictionary', 'http://www.pbm.com/~lindahl/florio/', :target => '_blank' %>
+  <form action="<%= root_path %>" method ='get' class = 'form-inline'></i>
+
+    <br />
     <div class = 'form-group'>
     <p>
       <input name='search' id='search' value ='<%= params[:search] %>' data-autocomplete-source='<%=autosearches_path %>?search=' placeholder = 'Enter search' class = 'form-control' />
@@ -17,8 +32,11 @@
   <div class = 'result' >
     <hr class = 'divide' />
     <% if @word.present? %>
+          <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#editWord">
+            edit
+            </button>
           <h3><%= @word.word %></h3>
-          <%= link_to 'edit', edit_word_path(@word), :class => 'btn btn-success pull-right' %>
+
           <p>
             <b>Definition</b>:
           <br>
@@ -46,7 +64,7 @@
 <div class = 'suggestion'>
 
 <% if @words.present? %>
-<h4>Other Suggestions:</h4>
+<h4>Related results:</h4>
   <table class = 'table table-hover'>
     <thead>
     <tr>
@@ -60,13 +78,49 @@
         <tr>
           <td><%= link_to word.word, word_path(word) %></td>
           <td><%= word.definition %></td>
-          <td><%= link_to 'edit', edit_word_path(word), :class => 'btn btn-success' %><td>
+          <td>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editWord">
+            edit
+            </button>
+          </td>
         </tr>
       <% end %>
     </tbody>
   </table>
 <% end %>
 </div>
+
+<!-- Button trigger modal -->
+
+<% if @word.present? %>
+  <!-- Modal -->
+  <div class="modal fade" id="editWord" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Edit</h4>
+        </div>
+        <%= simple_form_for @word do |f| %>
+        <div class="modal-body">
+          Thank you for helping us to edit. You can search from this source<%= link_to 'http://www.pbm.com/~lindahl/florio/search/search.cgi', :target => '_blank', :id => 'florioSearch', :data_source => :word do %> 
+            <i>Woodcut facsimile of the John Florio's Dictionary</i>
+          <% end %>
+          <%= f.input :word %>
+          <%= f.input :definition %>
+          <%= f.input :alternative_word %>
+          <%= f.input :alternative_definition %>
+          <br />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+          <%= f.submit 'update', :class => 'btn btn-info' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <script>
 $(function () {
