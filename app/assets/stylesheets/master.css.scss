@@ -29,6 +29,7 @@ ul.ui-autocomplete {
 	cursor: default;
 }
 
+
 li {
 	background-color: #FFF;
 	border-top: solid 1px #DDD;
@@ -36,14 +37,11 @@ li {
 	padding: 0;
 }
 
-li.selected {
-	background-color: #428bca;
-	color: green;
-	border-top: solid 1px #DDD;
+li:hover, li:focus {
+	background: #428bca;
 	margin: 0;
 	padding: 0;
 }
-
 
 a {
 	color: #000;
@@ -51,8 +49,13 @@ a {
 	padding: 3px;
 }
 
-a.ui-state-hover, a.ui-state-active {
-	background-color: #FFFCB2;
+a.ui-state-hover, a.ui-state-active,  a.ui-state-focus {
+	background: #428bca;
+	text-decoration: none;
+	background-color: #428bca;
+	color: white;
+	margin: 0;
+	padding: 0;
 }
 
 .clr {
