@@ -16,7 +16,8 @@
 <br class ='clr' />
 <div class = 'florio center-block text-center'>
   <br />
-  <h1>Florio's 1611 <br/>Italian-English Dictionary</h1>
+  <h1><%= link_to image_tag("florio.png", :alt => "Florio's 1611 Italian-English Dictionary", height: 110, :class => 'responsive'), root_path %>
+  </h1>
   <i>Source: <%= link_to 'Florio Dictionary', 'http://www.pbm.com/~lindahl/florio/', :target => '_blank' %>
   <form action="<%= root_path %>" method ='get' class = 'form-inline'></i>
 

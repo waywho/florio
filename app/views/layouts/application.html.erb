@@ -1,31 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Florio</title>
+  <title>Florio's 1611 Italian-English Dictionary</title>
+  <%= favicon_link_tag 'dictionary.ico' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
 
 <div class = 'container'>
-<ul class="nav nav-pills pull-right">
-  ...
-  <li role="presentation" class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-      Dropdown <span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu" role="menu">
-      ...
-    </ul>
-  </li>
-  ...
-</ul>
+<div class = 'info pull-right'>
+   <%= link_to image_tag("info.png", :alt => "info", height: 35, :class => 'responsive') %>
+</div>
 <%= yield %>
 
 
 </div>
+<div class = 'text-center'><font size = "2">©2015 WeiHsi Hu</font></div>
 </body>
 
 <script>
