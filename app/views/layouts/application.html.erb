@@ -9,6 +9,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
 <br />
 <br />
 
@@ -23,8 +34,18 @@
 
 
 </div>
-<div class = 'text-center'><font size = "2">©2015 <a href = 'http://www.weihsihu.com' target='_blank'>WeiHsi Hu</a></font></div>
+<div class = 'text-center'>
+Did you find Florio useful?
+<br />
+<div class="fb-like" data-href="http://lookup.floriodictionary.com/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+<div class='twit'>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="waywho">Tweet</a>
+</div>
+<br />
+<br />
 
+<font size = "2">©2015 <a href = 'http://www.weihsihu.com' target='_blank'>WeiHsi Hu</a></font></div>
+  
   <script>
    $(".info-button").click(function(e){
       e.preventDefault();
