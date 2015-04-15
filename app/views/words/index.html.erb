@@ -14,6 +14,7 @@
      <br />
 </div>
 <br class ='clr' />
+
 <div class = 'florio center-block text-center'>
   <h1><%= link_to image_tag("florio.png", :alt => "Florio's 1611 Italian-English Dictionary", width: 400, :class => 'img-responsive center-block'), root_path %></h1>
   Search for old Italian words. 
@@ -30,10 +31,9 @@
 </div>
 
 <br />
-
   <div class = 'result' >
-    <hr class = 'divide' />
     <% if @word.present? %>
+    <hr class = 'divide' />
           <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#editWord">
             edit
             </button>
@@ -58,40 +58,62 @@
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, class: name %>
       <% end %>
-    <% end %>
-    <hr class = 'divide' />
+  <% end %>  
+  <hr class = 'divide' />
   </div>
 
-
-<div class = 'suggestion'>
+<br class = 'clr' />
 
 <% if @words.present? %>
-<h4>Related results:</h4>
-  <table class = 'table table-hover'>
-    <thead>
-    <tr>
-      <th>Italian Words</th>
-      <th>Definition</th>
-      <th></th>
-    </tr>
-    </thead>
-    <tbody>
-      <% @words.each do |word| %>
-        <tr>
-          <td><%= link_to word.word, word_path(word) %></td>
-          <td><%= word.definition %></td>
-          <td>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editWord">
-            edit
-            </button>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
+
+<div class = 'ads col-xs-6 pull-right'>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sidebar ad -->
+<ins class="adsbygoogle pull-right"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-9281207145489175"
+     data-ad-slot="6308620045"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sidebar ad -->
+<ins class="adsbygoogle pull-right"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-9281207145489175"
+     data-ad-slot="6308620045"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 </div>
 
+  <div class = 'suggestion col-xs-6'>
+    <h4>Related results:</h4>
+      <table class = 'table table-hover'>
+        <thead>
+        <tr>
+          <th>Italian Words</th>
+          <th>Definition</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @words.each do |word| %>
+            <tr>
+              <td><%= link_to word.word, word_path(word) %></td>
+              <td><%= word.definition %></td>
+              <td>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editWord">
+                edit
+                </button>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+<% end %>
 <!-- Button trigger modal -->
 
 <% if @word.present? %>
