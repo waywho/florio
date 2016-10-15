@@ -1,4 +1,4 @@
-<div class = 'help col-xs-6 col-md-6'>
+<div class = 'help col-xs-12 col-md-6'>
   <br />
   Thank you for visiting this site. This site is still in its baby stages. As you search through the dictionary, you will see that there are words with gibberish characters in them. Unfortunately there are too many to correct at once.
   <br />
@@ -31,7 +31,7 @@
 </div>
 
 <br />
-  <div class = 'result' >
+<div class = 'result col-xs-12' >
     <% if @word.present? %>
     <hr class = 'divide' />
           <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#editWord">
@@ -60,59 +60,77 @@
       <% end %>
   <% end %>  
   <hr class = 'divide' />
-  </div>
+</div>
 
 <br class = 'clr' />
 
 <% if @words.present? %>
-
-<div class = 'ads col-xs-6 pull-right'>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- sidebar ad -->
-<ins class="adsbygoogle pull-right"
-     style="display:inline-block;width:300px;height:250px"
-     data-ad-client="ca-pub-9281207145489175"
-     data-ad-slot="6308620045"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- sidebar ad -->
-<ins class="adsbygoogle pull-right"
-     style="display:inline-block;width:300px;height:250px"
-     data-ad-client="ca-pub-9281207145489175"
-     data-ad-slot="6308620045"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+<div class = 'suggestion col-xs-12 col-md-6'>
+  <h4>Related results:</h4>
+    <table class = 'table table-hover'>
+      <thead>
+      <tr>
+        <th>Italian Words</th>
+        <th>Definition</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+        <% @words.each_with_index do |word, index| %>
+          <% if index == 5 %>
+          <tr>
+            <td colspan = "3">
+              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- florio-tb-banner-2 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:320px;height:50px"
+                 data-ad-client="ca-pub-9281207145489175"
+                 data-ad-slot="8350604846"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            </td>
+          </tr>
+          <% end %>
+          <tr>
+            <td><%= link_to word.word, word_path(word) %></td>
+            <td><%= word.definition %></td>
+            <td>
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editWord">
+              edit
+              </button>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 </div>
 
-  <div class = 'suggestion col-xs-6'>
-    <h4>Related results:</h4>
-      <table class = 'table table-hover'>
-        <thead>
-        <tr>
-          <th>Italian Words</th>
-          <th>Definition</th>
-          <th></th>
-        </tr>
-        </thead>
-        <tbody>
-          <% @words.each do |word| %>
-            <tr>
-              <td><%= link_to word.word, word_path(word) %></td>
-              <td><%= word.definition %></td>
-              <td>
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editWord">
-                edit
-                </button>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-  </div>
+<div class = 'ads col-xs-12 col-md-6'>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- florio-ad 1 -->
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9281207145489175"
+     data-ad-slot="1106539646"
+     data-ad-format="auto"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  <br />
+  <br />
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- florio-ad-2 -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-9281207145489175"
+       data-ad-slot="4060006048"
+       data-ad-format="auto"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
 <% end %>
 <!-- Button trigger modal -->
 
