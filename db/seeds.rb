@@ -9,7 +9,7 @@
 
 require 'csv'
 Word.delete_all
-csv_text = File.read(Rails.root.join('lib', 'seeds', 'florio6.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'florio5.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'UTF-8')
 csv.each do |row|
 	# item = find_by_id(row["id"]) || new
