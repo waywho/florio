@@ -16,7 +16,9 @@
 
 <div class = 'florio center-block text-center'>
   <h1><%= link_to image_tag("florio.png", :alt => "Florio's 1611 Italian-English Dictionary", width: 400, :class => 'img-responsive center-block'), root_path %></h1>
-  Search for old Italian words. 
+  Search for old Italian words. <br />
+  <h2>Word Search</h2>
+  Switch to: <%= link_to 'Text Search', text_search_path %><%= image_tag 'new.png', :id => 'new' %>
   <form action="<%= root_path %>" method ='get' class = 'form-inline'></i>
 
     <br />
@@ -30,105 +32,113 @@
 </div>
 
 <br />
-<div class = 'result col-xs-12' >
-    <% if @word.present? %>
-    <hr class = 'divide' />
-          <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#editWord">
-            edit
-            </button>
-          <h3><%= @word.word %></h3>
 
-          <p>
-            <b>Definition</b>:
-          <br>
-            <%= @word.definition %>
-          </p>
-      <% if @word.alternative_word.present? %>
-          <i>also as... <b><%= @word.alternative_word %></b></i>
-      <% end %>
-      <% if @word.alternative_definition.present? %>
-          <p>
-          <b>Definition</b>:
-          <br>
-          <%= @word.alternative_definition %>
-          </p>
-       <% end %>
-    <% else %>
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, class: name %>
-      <% end %>
-  <% end %>  
+<% if @word.present? %>
+  <div class = 'result col-xs-12' >
   <hr class = 'divide' />
-</div>
+        <div class = 'col-xs-12 col-md-6'>
+              <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#editWord">
+                edit
+                </button>
+              <h3><%= @word.word %></h3>
 
-<br class = 'clr' />
-
-<% if @words.present? %>
-<div class = 'suggestion col-xs-12 col-md-6'>
-  <h4>Related results:</h4>
-    <table class = 'table table-hover'>
-      <thead>
-      <tr>
-        <th>Italian Words</th>
-        <th>Definition</th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-        <% @words.each_with_index do |word, index| %>
-          <% if index == 5 %>
-          <tr>
-            <td colspan = "3">
-              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- florio-tb-banner-2 -->
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:320px;height:50px"
-                 data-ad-client="ca-pub-9281207145489175"
-                 data-ad-slot="8350604846"></ins>
-            <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-            </td>
-          </tr>
+              <p>
+                <b>Definition</b>:
+              <br>
+                <%= @word.definition %>
+              </p>
+          <% if @word.alternative_word.present? %>
+              <i>also as... <b><%= @word.alternative_word %></b></i>
           <% end %>
-          <tr>
-            <td><%= link_to word.word, word_path(word) %></td>
-            <td><%= word.definition %></td>
-            <td>
-              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editWord">
-              edit
-              </button>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-</div>
+          <% if @word.alternative_definition.present? %>
+              <p>
+              <b>Definition</b>:
+              <br>
+              <%= @word.alternative_definition %>
+              </p>
+          <% end %>
+        </div>
+        <div class ='ad col-xs-12 col-md-6'>
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- florio-ad 1 -->
+          <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9281207145489175"
+             data-ad-slot="1106539646"
+             data-ad-format="auto"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+    <br class='clr' />
+    <hr class = 'divide' />
 
-<div class = 'ads col-xs-12 col-md-6'>
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- florio-ad 1 -->
-  <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-9281207145489175"
-     data-ad-slot="1106539646"
-     data-ad-format="auto"></ins>
-  <script>
-  (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-  <br />
-  <br />
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- florio-ad-2 -->
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-9281207145489175"
-       data-ad-slot="4060006048"
-       data-ad-format="auto"></ins>
-  <script>
-  (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+  </div>
+<% elsif flash.present? %>
+<div class = 'result col-xs-12' >
+        <div class = 'col-xs-12 col-md-6 message'>
+          <% flash.each do |name, msg| %>
+            <%= content_tag :div, msg, class: "no_word" %>
+          <% end %>
+        </div>
+        <div class ='ad col-xs-12 col-md-6'>
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- florio-ad 1 -->
+          <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9281207145489175"
+             data-ad-slot="1106539646"
+             data-ad-format="auto"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
 </div>
+<% end %>  
+<br class = 'clr' />
+<br class = 'clr' />
+<br class = 'clr' />
+<% if @words.present? %>
+  <div class = 'suggestion col-xs-12 col-md-offset-2 col-md-8'>
+    <h4>Related results:</h4>
+      <table class = 'table table-hover'>
+        <thead>
+        <tr>
+          <th>Italian Word</th>
+          <th>Definition</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @words.each_with_index do |word, index| %>
+            <% if index == 0 || index % 3 == 0 %>
+            <tr>
+              <td colspan = "3">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+              <!-- florio-tb-banner-2 -->
+              <ins class="adsbygoogle"
+                   style="display:inline-block;width:320px;height:50px"
+                   data-ad-client="ca-pub-9281207145489175"
+                   data-ad-slot="8350604846"></ins>
+              <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+              </td>
+            </tr>
+            <% end %>
+            <tr>
+              <td><%= link_to word.word, word_path(word) %></td>
+              <td><%= word.definition %></td>
+              <td>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editWord">
+                edit
+                </button>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
 
 <% end %>
 <!-- Button trigger modal -->
@@ -144,13 +154,14 @@
         </div>
         <%= simple_form_for @word do |f| %>
         <div class="modal-body">
-          Thank you for helping us to edit. You can search from this source<%= link_to 'http://www.pbm.com/~lindahl/florio/search/search.cgi', :target => '_blank', :id => 'florioSearch', :data_source => @word.word do %> 
-            <i>Woodcut facsimile of the John Florio's Dictionary</i>
-          <% end %>
-          <%= f.input :word %>
-          <%= f.input :definition %>
-          <%= f.input :alternative_word %>
-          <%= f.input :alternative_definition %>
+          Thank you for helping us to edit. You can search from this source
+            <%= link_to 'http://www.pbm.com/~lindahl/florio/search/search.cgi', :target => '_blank', :id => 'florioSearch', :data_source => @word.word do %> 
+              <i>Woodcut facsimile of the John Florio's Dictionary</i>
+            <% end %>
+            <%= f.input :word %>
+            <%= f.input :definition %>
+            <%= f.input :alternative_word %>
+            <%= f.input :alternative_definition %>
           <br />
         </div>
         <div class="modal-footer">
@@ -173,6 +184,7 @@ $(function () {
     results: function() {}
     }
   });
+  // $('#new').effect('shake')
 
   // $('#florioSearch').click(function() {
   //   $.post("http://www.pbm.com/~lindahl/florio/search/search_backend.cgi", $('florioSearch').data('data_source'));

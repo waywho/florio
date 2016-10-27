@@ -1,0 +1,32 @@
+ <h4>Results:</h4>
+    <table class = 'table table-hover'>
+      <thead>
+      <tr>
+        <th>Italian Word</th>
+        <th>Definition</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% @results.each_with_index do |(key, value), index| %>
+          <% if index == 0 || index % 5 == 0 %>
+          <tr>
+            <td colspan = "3">
+              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- florio-tb-banner-2 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:320px;height:50px"
+                 data-ad-client="ca-pub-9281207145489175"
+                 data-ad-slot="8350604846"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            </td>
+          </tr>
+          <% end %>
+          <tr>
+            <td><%= key %></td>
+            <td><%= value %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>

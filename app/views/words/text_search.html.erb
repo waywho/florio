@@ -1,0 +1,20 @@
+<div class = 'florio center-block text-center'>
+  <h1><%= link_to image_tag("florio.png", :alt => "Florio's 1611 Italian-English Dictionary", width: 400, :class => 'img-responsive center-block'), root_path %></h1>
+  Search for old Italian words. <br />
+  <h2>Text Search</h2>
+  Switch to: <%= link_to 'Word Search', root_path %>
+</div>
+
+<div class="col-xs-12 col-md-6">
+<h4>Text</h4>
+Now you can batch search all your old Italian words. Enter all your words in this text box to commence batch search.
+  <%= simple_form_for :word, url: text_translate_path, method: 'post', remote: true  do |f| %>
+    <%= f.input :text, as: :text, label: false, input_html: {id: "search_text"} %>
+    <%= f.button :submit, "Translate", :id => 'translate_btn', :class => 'btn btn-success' %>
+  <% end %>
+</div>
+
+<div class='col-xs-12 col-md-6' id="results">
+ 
+</div>
+
