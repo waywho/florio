@@ -1,28 +1,7 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a little dictionary that uses fuzzy search to look up a database of English translation of old Italian words. The reference is from 1611 Florio's Italian-English Dictionary (http://www.pbm.com/~lindahl/florio/)
 
-Things you may want to cover:
+The search includes both single word search with 10 relevant/similar results and text search.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+https://i.creativecommons.org/l/by/4.0/80x15.png This work is licensed under a Creative Commons Attribution 4.0 International License (http://creativecommons.org/licenses/by/4.0/)
